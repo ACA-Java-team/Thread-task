@@ -69,6 +69,5 @@ class A{
 //        thread3.join();
 
         System.out.println(task1.sum + task2.sum + task3.sum + "   final " + Thread.currentThread().getName());
-
     }
 }
