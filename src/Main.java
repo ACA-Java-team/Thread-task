@@ -38,30 +38,24 @@ class A{
 
         thread1.start();
         synchronized(thread1) {
-            try {
+
                 System.out.println("Waiting for "+ thread1 + " to complete...");
                 thread1.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            
         }
         thread2.start();
             synchronized(thread2) {
-                try {
+
                     System.out.println("Waiting for "+ thread2 + " to complete...");
                     thread2.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
             }
         thread3.start();
         synchronized(thread3) {
-            try {
+
                 System.out.println("Waiting for "+ thread3 + " to complete...");
                 thread3.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
         }
 //
 //        thread1.join();
