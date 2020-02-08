@@ -14,13 +14,12 @@ public class Main implements Runnable {
 
     @Override
     public void run() {
-        synchronized (this) {
+
             for (long i = countfrom; i < countto; i++) {
                 sum += i;
             }
             System.out.println(Thread.currentThread().getName() + " " + sum);
-        notify();
-        }
+
     }
 
 
@@ -37,26 +36,16 @@ class A{
         Thread thread3 = new Thread(task3);
 
         thread1.start();
-        synchronized(thread1) {
+
 
                 System.out.println("Waiting for "+ thread1 + " to complete...");
-                thread1.wait();
-            
-        }
+                thread1.join();
         thread2.start();
-            synchronized(thread2) {
-
-                    System.out.println("Waiting for "+ thread2 + " to complete...");
-                    thread2.wait();
-
-            }
+                   System.out.println("Waiting for "+ thread2 + " to complete...");
+                    thread2.join();
         thread3.start();
-        synchronized(thread3) {
-
-                System.out.println("Waiting for "+ thread3 + " to complete...");
-                thread3.wait();
-
-        }
+           System.out.println("Waiting for "+ thread3 + " to complete...");
+                thread3.join();
 //
 //        thread1.join();
 //        thread2.join();
